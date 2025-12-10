@@ -24,13 +24,22 @@ void checkResult(const unsigned int dealerResult, const unsigned int playerResul
 
 int main(void) {
   // initialize deck array
-  unsigned int deck[SUITS][FACES] = {0};
+  unsigned int deck[SUITS][FACES];
+  int cardCounter = 1;
+  for (size_t i = 0; i < SUITS; i++) {
+    for (size_t j = 0; j < FACES; j++) {
+      deck[i][j] = cardCounter;
+      cardCounter++;
+    }
+  }
   unsigned int pokerHandSuits[PLAYERS][CARDS] = {0};
   unsigned int pokerHandFaces[PLAYERS][CARDS] = {0};
 
   srand(time(NULL));  // seed random-number generator
 
-  shuffle(deck);  // shuffle the deck
+  for (size_t i = 0; i < TOTALCARDS; i++) {
+    shuffle(deck);  // shuffle the deck
+  }
 
   // initialize suit array
   const char *suit[SUITS] = {"Hearts", "Diamonds", "Clubs", "Spades"};
@@ -83,19 +92,17 @@ int main(void) {
 
 // shuffle cards in deck
 void shuffle(unsigned int wDeck[][FACES]) {
-  // for each of the cards, choose slot of deck randomly
-  for (size_t card = 1; card <= TOTALCARDS; ++card) {
-    size_t row;     // row number
-    size_t column;  // column number
-
-    // choose new random location until unoccupied slot found
-    do {
+  size_t row;     // row number
+  size_t column;  // column number
+  size_t aux;
+  for (size_t i = 0; i < SUITS; i++) {
+    for (size_t j = 0; j < FACES; j++) {
       row = rand() % SUITS;
       column = rand() % FACES;
-    } while (wDeck[row][column] != 0);  // end do...while
-
-    // place card number in chosen slot of deck
-    wDeck[row][column] = card;
+      aux = wDeck[i][j];
+      wDeck[i][j] = wDeck[row][column];
+      wDeck[row][column] = aux;
+    }
   }
 }
 
@@ -106,6 +113,7 @@ void deal(unsigned int wDeck[][FACES], unsigned int pokerHandSuits[], unsigned i
   static size_t card = 1;
   for (size_t i = index; i < (index+numberOfCards); ++i, ++card) {
     // loop through rows of wDeck
+    int flag = 0;
     for (size_t row = 0; row < SUITS; ++row) {
       // loop through columns of wDeck for current row
       for (size_t column = 0; column < FACES; ++column) {
@@ -113,8 +121,11 @@ void deal(unsigned int wDeck[][FACES], unsigned int pokerHandSuits[], unsigned i
         if (wDeck[row][column] == card) {
           *(pokerHandSuits + i) = row;
           *(pokerHandFaces + i) = column;
+          flag = 1;
+          break;
         }
       }
+      if (flag == 1) break;
     }
   }
 }
