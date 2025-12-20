@@ -16,7 +16,7 @@
 * **c)**
     ```c
     for (size_t i = 0; i < SIZE; i++) {
-        printf("%.1f ", numbers[i]); 
+        printf("%.1f ", numbers[i]);
     }
     ```
 * **d)**
@@ -142,3 +142,18 @@
 * **b)** `int addNumbers(long int, int);`
 * **c)** `void sort(int n[], const int size, int (*f)(int, int)) {`
 * **d)** `void sort(int, const int, int (*f)(int, int));`
+
+## 7.19
+* This program concatenates string2 into string1, as long as it doesnt hit the SIZE char limit.
+
+## 7.20
+* This program calculates and outputs the length of the string.
+
+## 7.21
+* **a)** The variable `number` is not initialized upon declaration. In C, local variables are not automatically zeroed out; they contain "garbage values" (whatever data was previously at that memory location).
+* **b)** Incompatible pointer types (e.g., assigning an `int*` to a `char*`) require an explicit cast to function correctly and avoid compiler warnings or errors.
+* **c)** If x is a pointer and y is a standard variable, the statement x = y incorrectly attempts to use the value of y as a memory address. To store the address of y in x, the address-of operator must be used: x = &y.
+* **d)** When a variable s is initialized as an array (e.g., `char s[]`), the identifier s acts as a constant pointer to the first element. Because it is constant, its address cannot be reassigned to point elsewhere.
+* **e)** A `void*` is a generic pointer type. Because the compiler does not know the size of the underlying data, you cannot perform pointer arithmetic or dereferencing directly without first casting it to a specific type (like `int*` or `char*`).
+* **f)** The variable xPtr was likely declared as a standard variable rather than a pointer. To handle addresses, it must be declared using the pointer syntax: *xPtr.
+* **g)** The identifier s was used or accessed before it was properly initialized or allocated memory.
