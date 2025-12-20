@@ -157,3 +157,6 @@
 * **e)** A `void*` is a generic pointer type. Because the compiler does not know the size of the underlying data, you cannot perform pointer arithmetic or dereferencing directly without first casting it to a specific type (like `int*` or `char*`).
 * **f)** The variable xPtr was likely declared as a standard variable rather than a pointer. To handle addresses, it must be declared using the pointer syntax: *xPtr.
 * **g)** The identifier s was used or accessed before it was properly initialized or allocated memory.
+
+## 7.26
+* Considering both strings to have the same length, this program compares both strings to see if they are equals or differents.
