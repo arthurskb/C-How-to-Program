@@ -31,7 +31,7 @@ int main() {
 }
 
 int mazeTraverse(char maze[][DIMENSIONS], int currentX, int currentY) {
-  int checkMove(char maze[][DIMENSIONS], int newX, int newY);
+  int checkTraverseMove(char maze[][DIMENSIONS], int newX, int newY);
   static int initialized = 0;
   static Direction currentFace;
   static int initialX = -1;
@@ -50,11 +50,11 @@ int mazeTraverse(char maze[][DIMENSIONS], int currentX, int currentY) {
     initialY = currentY;
     initialized = 1;
   }
-  else if ((currentX == 0 || currentX == 11) || (currentY == 0 || currentY == 11)) {
-    return 1;
-  }
   else if ((currentX == initialX) && (currentY == initialY)) {
     return 0;
+  }
+  else if ((currentX == 0 || currentX == 11) || (currentY == 0 || currentY == 11)) {
+    return 1;
   }
 
   for (size_t i = 0; i < 4; i++) {
@@ -62,7 +62,7 @@ int mazeTraverse(char maze[][DIMENSIONS], int currentX, int currentY) {
     int newX = currentX + moveX[dir];
     int newY = currentY + moveY[dir];
 
-    if (checkMove(maze, newX, newY)) {
+    if (checkTraverseMove(maze, newX, newY)) {
       currentFace = (dir + 3) % 4;
       return mazeTraverse(maze, newX, newY);
     }
@@ -71,7 +71,7 @@ int mazeTraverse(char maze[][DIMENSIONS], int currentX, int currentY) {
 
 }
 
-int checkMove(char maze[][DIMENSIONS], int newX, int newY) {
+int checkTraverseMove(char maze[][DIMENSIONS], int newX, int newY) {
   if (newX < 0 || newX >= 12 || newY < 0 || newY >= 12) return 0;
   char check = maze[newX][newY];
   if (check == '#') return 0;
