@@ -160,3 +160,97 @@
 
 ## 7.26
 * Considering both strings to have the same length, this program compares both strings to see if they are equals or differents.
+
+## 7.27
+* **a)**
+
+| location  | number  | instruction             |
+|-----------|---------|-------------------------|
+|         0 | "+1012" | (Read B)                |
+|         1 | "+2012" | (Load B)                |
+|         2 | "+4110" | (Branch Negative to 10) |
+|         3 | "+1011" | (Read A)                |
+|         4 | "+2011" | (Load A)                |
+|         5 | "+4109" | (Branch Negative to 9)  |
+|         6 | "+3012" | (Adds B)                |
+|         7 | "+2112" | (Store B)               |
+|         8 | "+4003" | (Branch to 3)           |
+|         9 | "+1112" | (Write B)               |
+|        10 | "+4300" | (Halt)                  |
+|        11 | "+0000" | (Variable A)            |
+|        12 | "+0000" | (Variable B)            |
+
+* **b)**
+
+| location  | number  | instruction         |
+|-----------|---------|---------------------|
+|         0 | "+1021" | (Read E = 7)        |
+|         1 | "+1022' | (Read A = 7)        |
+|         2 | "+1025" | (Read D = 1)        |
+|         3 | "+1023" | (Read B)            |
+|         4 | "+2022" | (Load A)            |
+|         5 | "+3125" | (Subs D)            |
+|         6 | "+2122" | (Store A)           |
+|         7 | "+1024" | (Read C)            |
+|         8 | "+2023" | (Load B)            |
+|         9 | "+3024" | (Adds C)            |
+|        10 | "+2123" | (Store B)           |
+|        11 | "+2022" | (Load A)            |
+|        12 | "+3125" | (Subs D)            |
+|        13 | "+4216" | (Branch Zero to 16) |
+|        14 | "+2122" | (Store A)           |
+|        15 | "+4007" | (Branch to 7)       |
+|        16 | "+2023" | (Load B)            |
+|        17 | "+3221" | (Divide E)          |
+|        18 | "+2123" | (Store B)           |
+|        19 | "+1123" | (Write B)           |
+|        20 | "+4300" | (Halt)              |
+|        21 | "+0000" | (Variable E) = 7    |
+|        22 | "+0000" | (Variable A) = 7    |
+|        23 | "+0000" | (Variable B)        |
+|        24 | "+0000" | (Variable C)        |
+|        25 | "+0000" | (Variable D) = 1    |
+
+* **c)**
+
+| location  | number  | instruction             |
+|-----------|---------|-------------------------|
+|         0 | "+1036" | (Read B = 1)            |
+|         1 | "+1035" | (Read A)                |
+|         2 | "+2035" | (Load A)                |
+|         3 | "+4134" | (Branch Negative to 34) |
+|         4 | "+4234" | (Branch Zero to 34)     |
+|         5 | "+1037" | (Read C)                |
+|         6 | "+3136" | (Subs B)                |
+|         7 | "+4233" | (Branch Zero to 33)     |
+|         8 | "+2135" | (Store A)               |
+|         9 | "+2037" | (Load C)                |
+|        10 | "+4123" | (Branch Negative to 23) |
+|        11 | "+1038" | (Read D)                |
+|        12 | "+2038" | (Load D)                |
+|        13 | "+4127" | (Branch Negative to 27) |
+|        14 | "+3137" | (Subs C)                |
+|        15 | "+4128" | (Branch Negative to 28) |
+|        16 | "+2038" | (Load D)                |
+|        17 | "+2137" | (Store C)               |
+|        18 | "+2035" | (Load A)                |
+|        19 | "+3136" | (Subs B)                |
+|        20 | "+4233" | (Branch Zero to 33)     |
+|        21 | "+2135" | (Store A)               |
+|        22 | "+4009" | (Branch to 9)           |
+|        23 | "+1038" | (Read D)                |
+|        24 | "+2038" | (Load D)                |
+|        25 | "+4130" | (Branch Negative to 30) |
+|        26 | "+4016" | (Branch to 16)          |
+|        27 | "+4018" | (Branch to 18)          |
+|        28 | "+2037" | (Load C)                |
+|        29 | "+4017" | (Branch to 17)          |
+|        30 | "+3137" | (Subs C)                |
+|        31 | "+4128" | (Branch Negative to 28) |
+|        32 | "+4016" | (Branch to 16)          |
+|        33 | "+1137" | (Write C)               |
+|        34 | "+4300" | (Halt)                  |
+|        35 | "+0000" | (Variable A)            |
+|        36 | "+0000" | (Variable B) = 1        |
+|        37 | "+0000" | (Variable C)            |
+|        38 | "+0000" | (Variable D)            |
