@@ -3,9 +3,10 @@
 #include <time.h>
 
 #define DIMENSIONS 12
-typedef enum {NORTH, EAST, SOUTH, WEST} Direction;
+typedef enum { NORTH, EAST, SOUTH, WEST } Direction;
 
-int mazeGenerator(char maze[][DIMENSIONS], int startingPoint[], int endingPoint[]);
+int mazeGenerator(char maze[][DIMENSIONS], int startingPoint[],
+                  int endingPoint[]);
 void printMaze(char (*maze)[DIMENSIONS]);
 
 int main() {
@@ -19,7 +20,6 @@ int main() {
   printf("EndingPoint = {%d, %d}\n", endingPoint[0], endingPoint[1]);
 }
 
-
 void printMaze(char (*maze)[DIMENSIONS]) {
   for (size_t i = 0; i < DIMENSIONS; i++) {
     for (size_t j = 0; j < DIMENSIONS; j++) {
@@ -30,8 +30,9 @@ void printMaze(char (*maze)[DIMENSIONS]) {
   printf("\n");
 }
 
-int mazeGenerator(char maze[][DIMENSIONS], int startingPoint[], int endingPoint[]) {
-  void initializeMaze(char (*maze)[DIMENSIONS]);
+int mazeGenerator(char maze[][DIMENSIONS], int startingPoint[],
+                  int endingPoint[]) {
+  void initializeMaze(char(*maze)[DIMENSIONS]);
   int checkMove(int newX, int newY);
   void shuffleDir(Direction dirs[]);
 
@@ -54,14 +55,18 @@ int mazeGenerator(char maze[][DIMENSIONS], int startingPoint[], int endingPoint[
   for (size_t i = 0; i < 4; i++) {
     int moveX = 0;
     int moveY = 0;
-    if (dirs[i] == NORTH) moveX = -2;
-    else if (dirs[i] == EAST) moveY = 2;
-    else if (dirs[i] == SOUTH) moveX = 2;
-    else if (dirs[i] == WEST) moveY = -2;
+    if (dirs[i] == NORTH)
+      moveX = -2;
+    else if (dirs[i] == EAST)
+      moveY = 2;
+    else if (dirs[i] == SOUTH)
+      moveX = 2;
+    else if (dirs[i] == WEST)
+      moveY = -2;
     int nextX = currentX + moveX;
     int nextY = currentY + moveY;
-    int midX = currentX + moveX/2;
-    int midY = currentY + moveY/2;
+    int midX = currentX + moveX / 2;
+    int midY = currentY + moveY / 2;
     if (checkMove(nextX, nextY) && maze[nextX][nextY] == '#') {
       maze[nextX][nextY] = '.';
       maze[midX][midY] = '.';
@@ -100,7 +105,7 @@ void shuffleDir(Direction dirs[]) {
   int auxRand;
   int auxDirs[4] = {-1, -1, -1, -1};
   for (size_t i = 0; i < 4; i++) {
-    while(1) {
+    while (1) {
       auxRand = rand() % 4;
       if (auxDirs[auxRand] == -1) {
         auxDirs[auxRand] = i;
@@ -114,7 +119,8 @@ void shuffleDir(Direction dirs[]) {
 }
 
 int checkMove(int newX, int newY) {
-  if (newX < 1 || newX >= DIMENSIONS-1 || newY < 1 || newY >= DIMENSIONS-1) return 0;
+  if (newX < 1 || newX >= DIMENSIONS - 1 || newY < 1 || newY >= DIMENSIONS - 1)
+    return 0;
   return 1;
 }
 

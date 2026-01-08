@@ -17,9 +17,9 @@ int main() {
     scanf("%lf", &a);
     printf("Insert second number: ");
     scanf("%lf", &b);
-    (*functionPtr[choice-1])(a, b);
-  }
-  else printf("Invalid option, program terminated.\n");
+    (*functionPtr[choice - 1])(a, b);
+  } else
+    printf("Invalid option, program terminated.\n");
 }
 
 void add(double a, double b) {
@@ -39,4 +39,3 @@ void div(double a, double b) {
   double result = a / b;
   printf("%lf%s%lf%s%lf\n", a, " / ", b, " = ", result);
 }
-

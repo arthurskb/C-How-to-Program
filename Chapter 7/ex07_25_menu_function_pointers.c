@@ -9,11 +9,12 @@ void maxGrades(int grades[][TESTS]);
 void avgGrades(int grades[][TESTS]);
 
 int main() {
-
-  void (*processGrades[4])(int [][TESTS]) = {printGrades, minGrades, maxGrades, avgGrades};
+  void (*processGrades[4])(int[][TESTS]) = {printGrades, minGrades, maxGrades,
+                                            avgGrades};
   printf("Welcome to the Grades program\n");
   int choice = 0;
-  int grades[STUDENTS][TESTS] = {{10, 9, 8}, {6, 6, 6}, {8, 4, 10}, {2, 9, 7}, {2, 3, 4}};
+  int grades[STUDENTS][TESTS] = {
+      {10, 9, 8}, {6, 6, 6}, {8, 4, 10}, {2, 9, 7}, {2, 3, 4}};
 
   while (1) {
     printf("Enter a choice:\n");
@@ -40,9 +41,9 @@ int main() {
 
 void printGrades(int grades[][TESTS]) {
   for (size_t i = 0; i < STUDENTS; i++) {
-    printf("Student %ld: ", i+1);
+    printf("Student %ld: ", i + 1);
     for (size_t j = 0; j < TESTS; j++) {
-      printf("Exam %ld = %d ", j+1, grades[i][j]);
+      printf("Exam %ld = %d ", j + 1, grades[i][j]);
     }
     printf("\n");
   }
@@ -52,7 +53,7 @@ void minGrades(int grades[][TESTS]) {
   int min = 10;
   for (size_t i = 0; i < STUDENTS; i++) {
     for (size_t j = 0; j < TESTS; j++) {
-      if(grades[i][j] < min) {
+      if (grades[i][j] < min) {
         min = grades[i][j];
       }
     }
@@ -64,7 +65,7 @@ void maxGrades(int grades[][TESTS]) {
   int max = 0;
   for (size_t i = 0; i < STUDENTS; i++) {
     for (size_t j = 0; j < TESTS; j++) {
-      if(grades[i][j] > max) {
+      if (grades[i][j] > max) {
         max = grades[i][j];
       }
     }
@@ -80,7 +81,7 @@ void avgGrades(int grades[][TESTS]) {
     for (size_t j = 0; j < TESTS; j++) {
       sum += grades[i][j];
     }
-    avg = sum/TESTS;
-    printf("The average on all tests for Student %ld is %d\n", i+1, avg);
+    avg = sum / TESTS;
+    printf("The average on all tests for Student %ld is %d\n", i + 1, avg);
   }
 }

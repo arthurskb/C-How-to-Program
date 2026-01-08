@@ -6,16 +6,18 @@ void volume(double radius);
 
 int main() {
   void (*functionPtr[3])(double) = {circumference, area, volume};
-  printf("%s", "Hi, select which calculation to perform:\n1 - circumference\n2 - area\n3 - volume\n");
+  printf("%s",
+         "Hi, select which calculation to perform:\n1 - circumference\n2 - "
+         "area\n3 - volume\n");
   int choice = 0;
   scanf("%d", &choice);
   if (choice > 0 && choice <= 3) {
     printf("Insert the radius to be calculated\n");
     double radius;
     scanf("%lf", &radius);
-    (*functionPtr[choice-1])(radius);
-  }
-  else printf("Invalid choice, program terminated.\n");
+    (*functionPtr[choice - 1])(radius);
+  } else
+    printf("Invalid choice, program terminated.\n");
 }
 
 void circumference(double radius) {

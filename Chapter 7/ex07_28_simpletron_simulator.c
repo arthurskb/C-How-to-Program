@@ -15,11 +15,13 @@
 
 void printWelcome();
 void loadProgram(int memory[100]);
-void printComputerDump(int accumulator, int instructionCounter, int instructionRegister, int operationCode, int operand, int memory[100]);
-void executeProgram(int memory[100], int *accumulator, int *instructionRegister, int *operationCode, int *operand, int *instructionCounter);
+void printComputerDump(int accumulator, int instructionCounter,
+                       int instructionRegister, int operationCode, int operand,
+                       int memory[100]);
+void executeProgram(int memory[100], int *accumulator, int *instructionRegister,
+                    int *operationCode, int *operand, int *instructionCounter);
 
 int main() {
-
   printWelcome();
   int memory[100] = {0};
   int accumulator = 0;
@@ -28,12 +30,14 @@ int main() {
   int operand = 0;
   int instructionRegister = 0;
   loadProgram(memory);
-  executeProgram(memory, &accumulator, &instructionRegister, &operationCode, &operand, &instructionCounter);
-  printComputerDump(accumulator, instructionCounter, instructionRegister, operationCode, operand, memory);
-
+  executeProgram(memory, &accumulator, &instructionRegister, &operationCode,
+                 &operand, &instructionCounter);
+  printComputerDump(accumulator, instructionCounter, instructionRegister,
+                    operationCode, operand, memory);
 }
 
-void executeProgram(int memory[100], int *accumulator, int *instructionRegister, int *operationCode, int *operand, int *instructionCounter) {
+void executeProgram(int memory[100], int *accumulator, int *instructionRegister,
+                    int *operationCode, int *operand, int *instructionCounter) {
   while (1) {
     *instructionRegister = memory[*instructionCounter];
     *operationCode = *instructionRegister / 100;
@@ -41,11 +45,14 @@ void executeProgram(int memory[100], int *accumulator, int *instructionRegister,
 
     (*instructionCounter)++;
 
-  printf("instruction = %d, instructionCounter = %d, opCode = %d, operand = %d\n", *instructionRegister, *instructionCounter, *operationCode, *operand);
+    printf(
+        "instruction = %d, instructionCounter = %d, opCode = %d, operand = "
+        "%d\n",
+        *instructionRegister, *instructionCounter, *operationCode, *operand);
 
     if (*operationCode == HALT) {
-        printf("*** Simpletron execution terminated ***\n");
-        break;
+      printf("*** Simpletron execution terminated ***\n");
+      break;
     }
 
     switch (*operationCode) {
@@ -70,7 +77,9 @@ void executeProgram(int memory[100], int *accumulator, int *instructionRegister,
         break;
       case DIV:
         if (memory[*operand] == 0) {
-          printf("*** Attempt to divide by zero ***\n*** Simpletron execution abnormally terminated ***\n");
+          printf(
+              "*** Attempt to divide by zero ***\n*** Simpletron execution "
+              "abnormally terminated ***\n");
           *operationCode = 43;
           break;
         }
@@ -96,14 +105,17 @@ void executeProgram(int memory[100], int *accumulator, int *instructionRegister,
         }
         break;
       default:
-        printf("*** Unknown OpCode %d at address %02d ***\n", *operationCode, *instructionCounter);
+        printf("*** Unknown OpCode %d at address %02d ***\n", *operationCode,
+               *instructionCounter);
         return;
     }
     if (*instructionCounter < 0 || *instructionCounter >= 100) break;
   }
 }
 
-void printComputerDump(int accumulator, int instructionCounter, int instructionRegister, int operationCode, int operand, int memory[100]) {
+void printComputerDump(int accumulator, int instructionCounter,
+                       int instructionRegister, int operationCode, int operand,
+                       int memory[100]) {
   printf("REGISTERS:\n");
   printf("%-30s%+05d\n", "accumulator", accumulator);
   printf("%-33s%02d\n", "instructionCounter", instructionCounter);
@@ -117,14 +129,19 @@ void printComputerDump(int accumulator, int instructionCounter, int instructionR
   for (size_t i = 0; i < 100; i += 10) {
     printf("%2ld", i);
     for (size_t j = 0; j < 10; j++) {
-      printf("   %+05d", memory[i+j]);
+      printf("   %+05d", memory[i + j]);
     }
     printf("\n");
   }
 }
 
 void printWelcome() {
-  printf("*** Welcome to Simpletron! ***\n*** Please enter your program one instruction ***\n*** (or data word) at a time. I will type the ***\n*** locatio number and a question mark (?).  ***\n*** You then type the word for that location. ***\n*** Type the sentinel -99999 to stop entering ***\n*** your program. ***\n");
+  printf(
+      "*** Welcome to Simpletron! ***\n*** Please enter your program one "
+      "instruction ***\n*** (or data word) at a time. I will type the ***\n*** "
+      "locatio number and a question mark (?).  ***\n*** You then type the "
+      "word for that location. ***\n*** Type the sentinel -99999 to stop "
+      "entering ***\n*** your program. ***\n");
 }
 
 void loadProgram(int memory[100]) {
@@ -133,7 +150,8 @@ void loadProgram(int memory[100]) {
   while (instruction != -99999 && counter != 100) {
     printf("%02d ? ", counter);
     scanf("%d", &instruction);
-    while (instruction != -99999 && (instruction < -9999 || instruction > 9999)) {
+    while (instruction != -99999 &&
+           (instruction < -9999 || instruction > 9999)) {
       printf("Invalid operation, try inserting again: (-99999 to terminate)\n");
       printf("%02d ? ", counter);
       scanf("%d", &instruction);

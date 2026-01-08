@@ -12,15 +12,22 @@
 
 // prototypes
 void shuffle(unsigned int wDeck[][FACES]);  // shuffling modifies wDeck
-void deal(unsigned int wDeck[][FACES], unsigned int pokerHandSuits[], unsigned int pokerHandFaces[],
-    const unsigned int index, const unsigned int numberOfCards);
-int checkHand(const unsigned int pokerHandSuits[], const unsigned int pokerHandFaces[]);
-void printHand(const char *wFace[], const char *wSuit[], const unsigned int pokerHandSuits[], const unsigned int pokerHandFaces[],
-    const unsigned int handResult);
-void evaluateHand(unsigned int wDeck[][FACES], unsigned int pokerHandSuits[], unsigned int pokerHandFaces[], const unsigned int result);
+void deal(unsigned int wDeck[][FACES], unsigned int pokerHandSuits[],
+          unsigned int pokerHandFaces[], const unsigned int index,
+          const unsigned int numberOfCards);
+int checkHand(const unsigned int pokerHandSuits[],
+              const unsigned int pokerHandFaces[]);
+void printHand(const char *wFace[], const char *wSuit[],
+               const unsigned int pokerHandSuits[],
+               const unsigned int pokerHandFaces[],
+               const unsigned int handResult);
+void evaluateHand(unsigned int wDeck[][FACES], unsigned int pokerHandSuits[],
+                  unsigned int pokerHandFaces[], const unsigned int result);
 void sort(unsigned int pokerHandSuits[], unsigned int pokerHandFaces[]);
-void checkResult(const unsigned int dealerResult, const unsigned int playerResult, const unsigned int pokerHandSuits[][CARDS],
-    const unsigned int pokerHandFaces[][CARDS]);
+void checkResult(const unsigned int dealerResult,
+                 const unsigned int playerResult,
+                 const unsigned int pokerHandSuits[][CARDS],
+                 const unsigned int pokerHandFaces[][CARDS]);
 
 int main(void) {
   // initialize deck array
@@ -62,23 +69,25 @@ int main(void) {
   if (choice == 'y') {
     int aux = 0;
     for (size_t i = 0; i < 3; i++) {
-      printf("Remaining replacements: %ld\n", 3-i);
-      printf("Which card would you like to replace now? [1-5] or [0] to cancel/stop\n");
+      printf("Remaining replacements: %ld\n", 3 - i);
+      printf(
+          "Which card would you like to replace now? [1-5] or [0] to "
+          "cancel/stop\n");
       scanf("%d", &aux);
       if (aux == 0) break;
-      deal(deck, pokerHandSuits[1], pokerHandFaces[1], aux-1, 1);
+      deal(deck, pokerHandSuits[1], pokerHandFaces[1], aux - 1, 1);
     }
     sort(pokerHandSuits[1], pokerHandFaces[1]);
     printf("Your new Hand is:\n");
     playerResult[1] = checkHand(pokerHandSuits[1], pokerHandFaces[1]);
-    printHand(face, suit, pokerHandSuits[1], pokerHandFaces[1], playerResult[1]);
+    printHand(face, suit, pokerHandSuits[1], pokerHandFaces[1],
+              playerResult[1]);
   }
 
   playerResult[0] = checkHand(pokerHandSuits[0], pokerHandFaces[0]);
   printf("Dealer's Hand is:\n");
   printHand(face, suit, pokerHandSuits[0], pokerHandFaces[0], playerResult[0]);
   checkResult(playerResult[0], playerResult[1], pokerHandSuits, pokerHandFaces);
-
 }
 
 // shuffle cards in deck
@@ -100,11 +109,12 @@ void shuffle(unsigned int wDeck[][FACES]) {
 }
 
 // deal cards in deck
-void deal(unsigned int wDeck[][FACES], unsigned int pokerHandSuits[], unsigned int pokerHandFaces[],
-    const unsigned int index, const unsigned int numberOfCards) {
+void deal(unsigned int wDeck[][FACES], unsigned int pokerHandSuits[],
+          unsigned int pokerHandFaces[], const unsigned int index,
+          const unsigned int numberOfCards) {
   // deal each of the cards
   static size_t card = 1;
-  for (size_t i = index; i < (index+numberOfCards); ++i, ++card) {
+  for (size_t i = index; i < (index + numberOfCards); ++i, ++card) {
     // loop through rows of wDeck
     for (size_t row = 0; row < SUITS; ++row) {
       // loop through columns of wDeck for current row
@@ -119,10 +129,13 @@ void deal(unsigned int wDeck[][FACES], unsigned int pokerHandSuits[], unsigned i
   }
 }
 
-void printHand(const char *wFace[], const char *wSuit[], const unsigned int pokerHandSuits[], const unsigned int pokerHandFaces[],
-    const unsigned int handResult) {
+void printHand(const char *wFace[], const char *wSuit[],
+               const unsigned int pokerHandSuits[],
+               const unsigned int pokerHandFaces[],
+               const unsigned int handResult) {
   for (size_t i = 0; i < CARDS; i++) {
-    printf("%ld - %5s of %-8s\n", i+1, wFace[pokerHandFaces[i]], wSuit[pokerHandSuits[i]]);
+    printf("%ld - %5s of %-8s\n", i + 1, wFace[pokerHandFaces[i]],
+           wSuit[pokerHandSuits[i]]);
   }
   switch (handResult) {
     case 6:
@@ -256,7 +269,8 @@ int checkStraight(const unsigned int pokerHandFaces[]) {
   return 1;
 }
 
-void evaluateHand(unsigned int wDeck[][FACES], unsigned int pokerHandSuits[], unsigned int pokerHandFaces[], const unsigned int result) {
+void evaluateHand(unsigned int wDeck[][FACES], unsigned int pokerHandSuits[],
+                  unsigned int pokerHandFaces[], const unsigned int result) {
   int saveIndex = 0;
   switch (result) {
     case 3:
@@ -282,14 +296,14 @@ void evaluateHand(unsigned int wDeck[][FACES], unsigned int pokerHandSuits[], un
       sort(pokerHandSuits, pokerHandFaces);
       break;
     case 1:
-      for (size_t i = 0; i < CARDS-1; i++) {
-        if (pokerHandFaces[i] == pokerHandFaces[i+1]) {
+      for (size_t i = 0; i < CARDS - 1; i++) {
+        if (pokerHandFaces[i] == pokerHandFaces[i + 1]) {
           saveIndex = i;
           break;
         }
       }
       for (size_t i = 0; i < CARDS; i++) {
-        if ((i != saveIndex) && (i != saveIndex+1)) {
+        if ((i != saveIndex) && (i != saveIndex + 1)) {
           deal(wDeck, pokerHandSuits, pokerHandFaces, i, 1);
         }
       }
@@ -302,9 +316,10 @@ void evaluateHand(unsigned int wDeck[][FACES], unsigned int pokerHandSuits[], un
   }
 }
 
-
-void checkResult(const unsigned int dealerResult, const unsigned int playerResult, const unsigned int pokerHandSuits[][CARDS],
-    const unsigned int pokerHandFaces[][CARDS]) {
+void checkResult(const unsigned int dealerResult,
+                 const unsigned int playerResult,
+                 const unsigned int pokerHandSuits[][CARDS],
+                 const unsigned int pokerHandFaces[][CARDS]) {
   int saveIndex[2] = {0};
   if (dealerResult > playerResult) {
     printf("The dealer won!\n");
@@ -325,8 +340,8 @@ void checkResult(const unsigned int dealerResult, const unsigned int playerResul
         break;
       default:
         for (size_t j = 0; j < PLAYERS; j++) {
-          for (size_t i = CARDS-1; i > 0; i--) {
-            if (pokerHandFaces[j][i] == pokerHandFaces[j][i-1]) {
+          for (size_t i = CARDS - 1; i > 0; i--) {
+            if (pokerHandFaces[j][i] == pokerHandFaces[j][i - 1]) {
               saveIndex[j] = i;
               break;
             }
@@ -334,7 +349,8 @@ void checkResult(const unsigned int dealerResult, const unsigned int playerResul
         }
         if (pokerHandFaces[0][saveIndex[0]] > pokerHandFaces[1][saveIndex[1]]) {
           printf("The dealer won!(Higher Card)\n");
-        } else if (pokerHandFaces[0][saveIndex[0]] < pokerHandFaces[1][saveIndex[1]]) {
+        } else if (pokerHandFaces[0][saveIndex[0]] <
+                   pokerHandFaces[1][saveIndex[1]]) {
           printf("The player won!(Higher Card)\n");
         } else {
           printf("DRAWN!\n");

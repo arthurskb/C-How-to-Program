@@ -6,7 +6,8 @@
 
 int moveHare(int *harePosition);
 int moveTortoise(int *tortoisePosition);
-void printPositions(const unsigned int harePosition, const unsigned int tortoisePosition);
+void printPositions(const unsigned int harePosition,
+                    const unsigned int tortoisePosition);
 
 int main() {
   srand(time(NULL));
@@ -53,7 +54,8 @@ int moveTortoise(int *tortoisePosition) {
   if (*tortoisePosition < 0) *tortoisePosition = 0;
 }
 
-void printPositions(const unsigned int harePosition, const unsigned int tortoisePosition) {
+void printPositions(const unsigned int harePosition,
+                    const unsigned int tortoisePosition) {
   for (size_t i = 0; i < SIZE; i++) {
     if ((i == harePosition) && (i == tortoisePosition)) {
       printf(" OUCH!!!");
