@@ -21,7 +21,6 @@
 * **t)** `ptr = strtok(s2, ",");`
 
 ### 8.2
-```c
 char vowel[] = "AEIOU";
 char vowel[] = {'A', 'E', 'I', 'O', 'U', '\0'};
 
