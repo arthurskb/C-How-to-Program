@@ -37,3 +37,10 @@ char vowel[] = {'A', 'E', 'I', 'O', 'U', '\0'};
 * **b)** `%s` is incorrect to read a char, it should be `%c`.
 * **c)** `s` is not large enough, it has to be `s[13]` so it can store the char `'\0'`.
 * **d)** The `if` should check for equality with 0 which would mean the strings are equals, or it will never work like intended.
+
+### 8.22
+* **a)** True
+* **b)** False
+* **c)** True
+* **d)** True
+* **e)** False
