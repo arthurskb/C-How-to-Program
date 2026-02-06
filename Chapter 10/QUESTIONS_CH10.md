@@ -1,4 +1,4 @@
-### 10.1
+## 10.1
 * **a)** structure
 * **b)** union
 * **c)** bitwise AND (`&`)
@@ -28,7 +28,7 @@
 ---
 
 ### 10.3
-* **a)** 
+* **a)**
 struct part {
     unsigned int partNumber;
     char partName[25];
@@ -53,7 +53,8 @@ struct part {
 ---
 
 ### 10.5
-* **a)** 
+* **a)**
+```c
 struct inventory {
     char partName[30];
     int partNumber;
@@ -61,7 +62,9 @@ struct inventory {
     int stock;
     int reorder;
 };
-* **b)** 
+```
+* **b)**
+```c
 union data {
     char c;
     short s;
@@ -69,20 +72,26 @@ union data {
     float f;
     double d;
 };
-* **c)** 
+```
+* **c)**
+```c
 struct address {
      char streetAddress[25];
      char city[20];
      char state[3];
      char zipCode[6];
 };
-* **d)** 
+```
+* **d)**
+```c
 struct student {
      char firstName[15];
      char lastName[15];
      struct address homeAddress;
 };
-* **e)** 
+```
+* **e)**
+```c
 struct test {
      unsigned int a : 1;
      unsigned int b : 1;
@@ -101,6 +110,7 @@ struct test {
      unsigned int o : 1;
      unsigned int p : 1;
 };
+```
 
 ---
 
