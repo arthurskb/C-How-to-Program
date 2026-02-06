@@ -28,7 +28,7 @@
 ---
 
 ### 10.3
-* **a)** ```c
+* **a)** 
 struct part {
     unsigned int partNumber;
     char partName[25];
@@ -53,7 +53,7 @@ struct part {
 ---
 
 ### 10.5
-* **a)** ```c
+* **a)** 
 struct inventory {
     char partName[30];
     int partNumber;
@@ -61,8 +61,7 @@ struct inventory {
     int stock;
     int reorder;
 };
-* **b)** ```c
-b) ```c
+* **b)** 
 union data {
     char c;
     short s;
@@ -70,20 +69,20 @@ union data {
     float f;
     double d;
 };
-* **c)** ```c
+* **c)** 
 struct address {
      char streetAddress[25];
      char city[20];
      char state[3];
      char zipCode[6];
 };
-* **d)** ```c
+* **d)** 
 struct student {
      char firstName[15];
      char lastName[15];
      struct address homeAddress;
 };
-* **e)** ```c
+* **e)** 
 struct test {
      unsigned int a : 1;
      unsigned int b : 1;
