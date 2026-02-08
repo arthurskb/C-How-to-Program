@@ -51,9 +51,8 @@ void fillDeck(Card *const wDeck, const char *wFace[], const char *wSuit[], const
   }
 }
 
-// shuffle cards
+// shuffle cards using Fisher-Yates algorithm
 void shuffle(Card *const wDeck) {
-  // loop through wDeck randomly swapping Cards
   for (size_t i = CARDS-1; i > 0; i--) {
     size_t j = rand() % (i+1);
     Card temp = wDeck[i];
@@ -67,7 +66,7 @@ void deal(const Card *const wDeck) {
   // loop through wDeck
   for (size_t i = 0; i < CARDS; ++i) {
     printf("%5s %5s of %-8s%s", wDeck[i].color, wDeck[i].face, wDeck[i].suit,
-           (i + 1) % 2 ? "  " : "\n");
+           (i + 1) % 4 ? "  " : "\n");
   }
 }
 
