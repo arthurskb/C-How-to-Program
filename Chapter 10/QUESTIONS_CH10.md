@@ -131,3 +131,15 @@ struct test {
 * **n)** `customerPtr->personal.state;`
 * **o)** `customerRecord.personal.zipCode;`
 * **p)** `customerPtr->personal.zipCode;`
+
+---
+
+### 10.16
+X = 2^10 = 1024
+The function checks the first 10 bits of num and returns 1 if they are all 0. Since a left shift represents multiplying by 2, if the first 10 bits are 0, any set bits from the 11th bit onward imply that the number is a multiple of 1024 (multiplied by 2^n) up to 32000.
+
+---
+
+### 10.17
+The program counts how many bits from the provided unsigned integer are equal to 1, the population of 1 bits. Returning 1 if there are an even number of 1's and 0 if there are an odd number of 1's.
+
