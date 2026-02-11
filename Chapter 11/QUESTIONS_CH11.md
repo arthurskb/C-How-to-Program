@@ -37,4 +37,30 @@
 * **b)** There's no `open` function, use `fopen`.
 * **c)** There are 2 errors: one is using `recPtr` as 1st argument, it should be `payPtr`. Two is using `scanf` instead of `fscanf`.
 * **d)** The error is opening with `"w"`, since it will discard current data. Use `"r+"` or `"a"` or `"a+"`.
-* **e)** The error is opening with `"w+"`, since it will discard current data. To append use `"a"` or `"a+"`.
+* **e)** The error is opening with `"w+"`, since it will discard current data. To append use `"a"` or `"a+"`.i
+
+---
+
+### 11.5
+* **a)** Files
+* **b)** Record
+* **c)** Record key
+* **d)** Field
+* **e)** `stdin`, `stdout` and `stderr`
+* **f)** `fputc`
+* **g)** `fputs`
+* **h)** `fwrite`
+* **i)** `rewind`
+
+---
+
+### 11.6
+* **a)** True.
+* **b)** False, people prefer to manipulate characters and fields as they are more human-readable. Bits are highly prone to error.
+* **c)** True.
+* **d)** True.
+* **e)** False, we progress from bits to characters to fields and so on.
+* **f)** False, a record key field is used to identify an unique record.
+* **g)** False, most companies use lots of different and organized files stored in databases.
+* **h)** False, the C program refers to it using a file pointer.
+* **i)** True.
