@@ -1,0 +1,5 @@
+Account Number      Name                          Balance
+100                 Alan Jones                    348.170013
+300                 Mary Smith                    27.190001
+500                 Samp Sharp                    0.000000
+700                 Suzy Green                    -14.220000
