@@ -27,6 +27,7 @@ int main(void)
        sentence[i++] = c;
     }
     sentence[i] = '\0'; // terminate string
+    fclose(fPtr);
     fputs("Insert the name of the file with the proper extension to write: (example: file.txt) ", stdout);
     scanf("%s", fileName);
     if((fPtr = fopen(fileName, "wx")) == NULL) {
@@ -34,7 +35,7 @@ int main(void)
       return 1;
     }
     fputs(sentence, fPtr);
-
+    fclose(fPtr);
   } else {
 
     fputs("Enter a line of text:\n", stdout);
