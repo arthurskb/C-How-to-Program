@@ -59,6 +59,7 @@ int main() {
         return 0;
     }
   }
+  fclose(fPtr);
 }
 
 void clearBuffer() {
