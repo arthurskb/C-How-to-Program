@@ -55,7 +55,7 @@ void concatenateList(ListNode** listOneHead, ListNode** listTwoHead) {
 
 void freeList(ListNode** head) {
   ListNode* curr = *head;
-  while (curr->nextPtr != NULL) {
+  while (curr != NULL) {
     ListNode* temp = curr;
     curr = curr->nextPtr;
     free(temp);
