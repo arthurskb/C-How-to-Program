@@ -1,9 +1,9 @@
 #include <stdio.h>
-#include <time.h>
 #include <stdlib.h>
+#include <time.h>
 
 typedef struct queueNode {
-  struct queueNode* nextPtr;
+  struct queueNode *nextPtr;
   int arrivalTime;
 } Customer;
 
@@ -18,8 +18,8 @@ int main() {
 
 void marketSimulation(int arrivalInterval) {
   srand(time(NULL));
-  Customer* head = NULL;
-  Customer* tail = NULL;
+  Customer *head = NULL;
+  Customer *tail = NULL;
   int numOfCustomers = 0;
   int maxCustomers = 0;
   int maxTimeWaiting = 0;
@@ -54,12 +54,12 @@ void marketSimulation(int arrivalInterval) {
   }
   printf("Using arrival interval from 1 to %d minutes:\n", arrivalInterval);
   printf("%d is the Max number of customers in the queue\n", maxCustomers);
-  printf("%d is the Max longest wait time experienced by a customer\n", maxTimeWaiting);
+  printf("%d is the Max longest wait time experienced by a customer\n",
+         maxTimeWaiting);
 }
 
 void enqueueCustomer(Customer **head, Customer **tail) {
-
-  Customer* newCustomer = malloc(sizeof(Customer));
+  Customer *newCustomer = malloc(sizeof(Customer));
 
   if (*head == NULL) {
     *head = newCustomer;
@@ -68,11 +68,10 @@ void enqueueCustomer(Customer **head, Customer **tail) {
   }
   *tail = newCustomer;
   (*tail)->nextPtr = NULL;
-
 }
 
 void dequeueCustomer(Customer **head, Customer **tail) {
-  Customer* temp = *head;
+  Customer *temp = *head;
   *head = (*head)->nextPtr;
   if (*head == NULL) {
     *tail = NULL;

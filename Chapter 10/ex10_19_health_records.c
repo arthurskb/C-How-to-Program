@@ -2,9 +2,9 @@
 #include <time.h>
 
 typedef struct {
-    unsigned int month;
-    unsigned int day;
-    unsigned int year;
+  unsigned int month;
+  unsigned int day;
+  unsigned int year;
 } BirthDate;
 
 typedef struct {
@@ -16,9 +16,9 @@ typedef struct {
   double weight;
 } HealthProfile;
 
-
 HealthProfile readData();
-unsigned int calculateAge(const unsigned int month, const unsigned int day, const unsigned int year);
+unsigned int calculateAge(const unsigned int month, const unsigned int day,
+                          const unsigned int year);
 void displayHeartConditions(const unsigned int age);
 void displayBMI(const double height, const double weight);
 void displayInfo(const HealthProfile const *data);
@@ -32,7 +32,9 @@ int main() {
 
 HealthProfile readData() {
   HealthProfile data;
-  printf("Welcome, please provide you the following data to estabilish your health profile: \n");
+  printf(
+      "Welcome, please provide you the following data to estabilish your "
+      "health profile: \n");
   printf("First Name: (Max of 24 characters) ");
   scanf("%24s", data.firstName);
   printf("Last Name: (Max of 24 characters) ");
@@ -56,12 +58,14 @@ HealthProfile readData() {
 }
 
 void displayInfo(const HealthProfile const *data) {
-  unsigned int age = calculateAge(data->birthDate.month, data->birthDate.day, data->birthDate.year);
+  unsigned int age = calculateAge(data->birthDate.month, data->birthDate.day,
+                                  data->birthDate.year);
   printf("Displaying user's data\n");
   printf("First Name: %s\n", data->firstName);
   printf("Last Name: %s\n", data->lastName);
   printf("Birth Gender: %c\n", data->gender);
-  printf("Date of birth: %u-%u-%u\n", data->birthDate.month, data->birthDate.day, data->birthDate.year);
+  printf("Date of birth: %u-%u-%u\n", data->birthDate.month,
+         data->birthDate.day, data->birthDate.year);
   printf("Height in inches: %lf\n", data->height);
   printf("Weight in inches: %lf\n", data->weight);
   printf("Age: %u years\n", age);
@@ -69,12 +73,13 @@ void displayInfo(const HealthProfile const *data) {
   displayHeartConditions(age);
 }
 
-unsigned int calculateAge(const unsigned int month, const unsigned int day, const unsigned int year) {
+unsigned int calculateAge(const unsigned int month, const unsigned int day,
+                          const unsigned int year) {
   time_t timeAux = time(NULL);
   struct tm *timeInfo = localtime(&timeAux);
-  unsigned int currMonth = ((unsigned int) timeInfo->tm_mon) + 1;
-  unsigned int currDay = (unsigned int) timeInfo->tm_mday;
-  unsigned int currYear = (unsigned int) timeInfo->tm_year + 1900;
+  unsigned int currMonth = ((unsigned int)timeInfo->tm_mon) + 1;
+  unsigned int currDay = (unsigned int)timeInfo->tm_mday;
+  unsigned int currYear = (unsigned int)timeInfo->tm_year + 1900;
   unsigned int age = currYear - year;
   if (currMonth < month) {
     age -= 1;
@@ -87,7 +92,7 @@ unsigned int calculateAge(const unsigned int month, const unsigned int day, cons
 }
 
 void displayBMI(const double height, const double weight) {
-  double bmi = (weight * 703)/(height*height);
+  double bmi = (weight * 703) / (height * height);
   printf("Your BMI is %.1lf\n", bmi);
   printf("Table for reference:\n");
   printf("BMI VALUES\n");
@@ -101,12 +106,15 @@ void displayHeartConditions(const unsigned int age) {
   unsigned int maxRate = 220 - age;
   unsigned int lowerBound = maxRate * 0.5;
   unsigned int upperBound = maxRate * 0.85;
-  printf("Your maximum heart rate suggested is: %u beats per minute.\n", maxRate);
-  printf("During exercise, you should aim to keep your heart rate between %u and %u beats per minute.\n", lowerBound, upperBound);
+  printf("Your maximum heart rate suggested is: %u beats per minute.\n",
+         maxRate);
+  printf(
+      "During exercise, you should aim to keep your heart rate between %u and "
+      "%u beats per minute.\n",
+      lowerBound, upperBound);
 }
 
 void clearInputBuffer() {
   int c;
-  while((c = getchar()) != '\n' && c != EOF);
+  while ((c = getchar()) != '\n' && c != EOF);
 }
-

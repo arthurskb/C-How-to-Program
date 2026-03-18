@@ -4,19 +4,23 @@
 
 void clearBuffer();
 
-int main(void)
-{
+int main(void) {
   int c;
   char sentence[SIZE];
   int i = 0;
   FILE *fPtr;
-  fputs("Would you like to read/write from/to the standard input or from/to a specified file? (0 - stdin or 1 - specified file) ", stdout);
+  fputs(
+      "Would you like to read/write from/to the standard input or from/to a "
+      "specified file? (0 - stdin or 1 - specified file) ",
+      stdout);
   int choice;
   scanf("%d", &choice);
 
   if (choice) {
-
-    fputs("Insert the name of the file with the proper extension to read: (example: file.txt) ", stdout);
+    fputs(
+        "Insert the name of the file with the proper extension to read: "
+        "(example: file.txt) ",
+        stdout);
     char fileName[SIZE];
     scanf("%s", fileName);
     if ((fPtr = fopen(fileName, "r")) == NULL) {
@@ -24,32 +28,32 @@ int main(void)
       return 1;
     }
     while ((i < SIZE - 1) && (c = fgetc(fPtr)) != '\n' && c != EOF) {
-       sentence[i++] = c;
+      sentence[i++] = c;
     }
-    sentence[i] = '\0'; // terminate string
+    sentence[i] = '\0';  // terminate string
     fclose(fPtr);
-    fputs("Insert the name of the file with the proper extension to write: (example: file.txt) ", stdout);
+    fputs(
+        "Insert the name of the file with the proper extension to write: "
+        "(example: file.txt) ",
+        stdout);
     scanf("%s", fileName);
-    if((fPtr = fopen(fileName, "wx")) == NULL) {
+    if ((fPtr = fopen(fileName, "wx")) == NULL) {
       printf("Failed to open the file\n");
       return 1;
     }
     fputs(sentence, fPtr);
     fclose(fPtr);
   } else {
-
     fputs("Enter a line of text:\n", stdout);
     clearBuffer();
     while ((i < SIZE - 1) && (c = fgetc(stdin)) != '\n') {
-       sentence[i++] = c;
+      sentence[i++] = c;
     }
-    sentence[i] = '\0'; // terminate string
+    sentence[i] = '\0';  // terminate string
     fputs("The line entered was: ", stdout);
     fputs(sentence, stdout);
     fputs("\n", stdout);
-
   }
-
 }
 
 void clearBuffer() {

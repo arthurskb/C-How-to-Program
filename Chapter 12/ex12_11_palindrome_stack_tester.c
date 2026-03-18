@@ -1,6 +1,6 @@
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
 
 typedef struct stack {
   char value;
@@ -26,8 +26,10 @@ int checkPalindrome() {
   int strI = 0;
 
   while (c = getchar()) {
-    if (c == '\n' || c == '\0' || c == EOF) return 0;
-    else if (isalnum(c)) break;
+    if (c == '\n' || c == '\0' || c == EOF)
+      return 0;
+    else if (isalnum(c))
+      break;
   }
   StackNode* head = malloc(sizeof(StackNode));
   head->value = c;

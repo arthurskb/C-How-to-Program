@@ -163,9 +163,10 @@ void printWelcome() {
 }
 
 void loadProgram(int memory[100]) {
-
   FILE *fPtr;
-  printf("Please, specify the complete file name to read the instructions from: (example instructions.txt) ");
+  printf(
+      "Please, specify the complete file name to read the instructions from: "
+      "(example instructions.txt) ");
   char fileName[100];
   scanf("%s", fileName);
   if ((fPtr = fopen(fileName, "r")) == NULL) {
@@ -174,12 +175,12 @@ void loadProgram(int memory[100]) {
   int instruction = 0;
   int counter = 0;
   while (instruction != -99999 && counter != 100) {
-    //printf("%02d ? ", counter);
+    // printf("%02d ? ", counter);
     fscanf(fPtr, "%d", &instruction);
     while (instruction != -99999 &&
            (instruction < -9999 || instruction > 9999)) {
-      //printf("Invalid operation, try inserting again: (-99999 to terminate)\n");
-      //printf("%02d ? ", counter);
+      // printf("Invalid operation, try inserting again: (-99999 to
+      // terminate)\n"); printf("%02d ? ", counter);
       fscanf(fPtr, "%d", &instruction);
     }
     memory[counter] = instruction;

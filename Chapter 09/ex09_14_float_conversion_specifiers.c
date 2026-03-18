@@ -2,7 +2,9 @@
 
 int main() {
   float e, f, g;
-  printf("Please input the number 1.2345 three times, pressing Enter after each insertion:\n");
+  printf(
+      "Please input the number 1.2345 three times, pressing Enter after each "
+      "insertion:\n");
   scanf("%e", &e);
   scanf("%f", &f);
   scanf("%g", &g);

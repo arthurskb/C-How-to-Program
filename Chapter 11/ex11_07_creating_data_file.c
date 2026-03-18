@@ -42,7 +42,8 @@ int main() {
   }
   fprintf(mPtr, "%-20s%-30s%s\n", "Account Number", "Name", "Balance");
   for (size_t i = 0; i < 4; i++) {
-    fprintf(mPtr, "%-20d%-30s%f\n", accounts[i].accountNumber, accounts[i].name, accounts[i].balance);
+    fprintf(mPtr, "%-20d%-30s%f\n", accounts[i].accountNumber, accounts[i].name,
+            accounts[i].balance);
   }
 
   FILE *tPtr = fopen("TransactionFile.txt", "wx");
@@ -52,7 +53,8 @@ int main() {
   }
   fprintf(tPtr, "%-20s%s\n", "Account Number", "Dollar Amount");
   for (size_t i = 0; i < 4; i++) {
-    fprintf(tPtr, "%-20d%f\n", transactions[i].accountNumber, transactions[i].dollarAmount);
+    fprintf(tPtr, "%-20d%f\n", transactions[i].accountNumber,
+            transactions[i].dollarAmount);
   }
   fclose(mPtr);
   fclose(tPtr);

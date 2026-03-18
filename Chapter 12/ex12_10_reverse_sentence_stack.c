@@ -8,9 +8,7 @@ typedef struct stack {
 
 void reverseSentence();
 
-int main() {
-  reverseSentence();
-}
+int main() { reverseSentence(); }
 
 void reverseSentence() {
   printf("Input a sentence:\n");
@@ -35,5 +33,4 @@ void reverseSentence() {
     free(temp);
   }
   printf("\n");
-
 }

@@ -20,5 +20,5 @@ int main() {
   printf("Float = %f\nDouble = %lf\nLong Double = %Lf\n", d, d, d);
   printf("\nPrinting the long double %Lf\n", x);
   printf("Float = %f\nDouble = %lf\nLong Double = %Lf\n", x, x, x);
-  //No, the values won't print correctly.
+  // No, the values won't print correctly.
 }

@@ -17,7 +17,8 @@ struct card {
 typedef struct card Card;  // new type name for struct card
 
 // prototypes
-void fillDeck(Card *const wDeck, const char *wFace[], const char *wSuit[], const char *wColor[]);
+void fillDeck(Card *const wDeck, const char *wFace[], const char *wSuit[],
+              const char *wColor[]);
 void shuffle(Card *const wDeck);
 void deal(const Card *const wDeck);
 
@@ -37,24 +38,25 @@ int main(void) {
   srand(time(NULL));  // randomize
 
   fillDeck(deck, face, suit, color);  // load the deck with Cards
-  shuffle(deck);               // put Cards in random order
-  deal(deck);                  // deal all 52 Cards
+  shuffle(deck);                      // put Cards in random order
+  deal(deck);                         // deal all 52 Cards
 }
 
 // place strings into Card structures
-void fillDeck(Card *const wDeck, const char *wFace[], const char *wSuit[], const char *wColor[]) {
+void fillDeck(Card *const wDeck, const char *wFace[], const char *wSuit[],
+              const char *wColor[]) {
   // loop through wDeck
   for (size_t i = 0; i < CARDS; ++i) {
     wDeck[i].face = wFace[i % FACES];
     wDeck[i].suit = wSuit[i / FACES];
-    wDeck[i].color = wColor[i / (FACES*2)];
+    wDeck[i].color = wColor[i / (FACES * 2)];
   }
 }
 
 // shuffle cards using Fisher-Yates algorithm
 void shuffle(Card *const wDeck) {
-  for (size_t i = CARDS-1; i > 0; i--) {
-    size_t j = rand() % (i+1);
+  for (size_t i = CARDS - 1; i > 0; i--) {
+    size_t j = rand() % (i + 1);
     Card temp = wDeck[i];
     wDeck[i] = wDeck[j];
     wDeck[j] = temp;

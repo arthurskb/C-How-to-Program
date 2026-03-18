@@ -17,7 +17,8 @@ void printDataSize(FILE *fPtr) {
   fprintf(fPtr, "%-25s%4lu\n", "char", sizeof(char));
   fprintf(fPtr, "%-25s%4lu\n", "unsigned char", sizeof(unsigned char));
   fprintf(fPtr, "%-25s%4lu\n", "short int", sizeof(short int));
-  fprintf(fPtr, "%-25s%4lu\n", "unsigned short int", sizeof(unsigned short int));
+  fprintf(fPtr, "%-25s%4lu\n", "unsigned short int",
+          sizeof(unsigned short int));
   fprintf(fPtr, "%-25s%4lu\n", "int", sizeof(int));
   fprintf(fPtr, "%-25s%4lu\n", "unsigned int", sizeof(unsigned int));
   fprintf(fPtr, "%-25s%4lu\n", "long int", sizeof(long int));

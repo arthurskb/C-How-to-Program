@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct linkedList{
+typedef struct linkedList {
   struct linkedList* nextPtr;
   int value;
 } ListNode;
@@ -47,7 +47,7 @@ void initializeList(ListNode** head, int i) {
   (*head)->value = i;
   (*head)->nextPtr = NULL;
   ListNode* curr = *head;
-  for (size_t j = i+1; j < i+10; j++) {
+  for (size_t j = i + 1; j < i + 10; j++) {
     ListNode* newNode = malloc(sizeof(ListNode));
     newNode->value = j;
     newNode->nextPtr = NULL;

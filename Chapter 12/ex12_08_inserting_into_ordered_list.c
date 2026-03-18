@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-typedef struct linkedList{
+typedef struct linkedList {
   struct linkedList* nextPtr;
   int value;
 } ListNode;

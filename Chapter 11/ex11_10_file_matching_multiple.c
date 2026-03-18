@@ -30,19 +30,24 @@ int main() {
   fprintf(nfPtr, "%-20s%-30s%s\n", "Account Number", "Name", "Balance");
   float holdDollarAmount[1000] = {0};
   int auxTransAccounts[1000] = {0};
-  while (fscanf(tfPtr, "%d%f", &currTrans.accountNumber, &currTrans.dollarAmount) == 2) {
+  while (fscanf(tfPtr, "%d%f", &currTrans.accountNumber,
+                &currTrans.dollarAmount) == 2) {
     holdDollarAmount[currTrans.accountNumber] += currTrans.dollarAmount;
     auxTransAccounts[currTrans.accountNumber]++;
   }
   int auxMasterAccounts[1000] = {0};
-  while (fscanf(ofPtr, "%d%s%s%f", &currAccount.accountNumber, currAccount.firstName, currAccount.lastName, &currAccount.balance) == 4) {
+  while (fscanf(ofPtr, "%d%s%s%f", &currAccount.accountNumber,
+                currAccount.firstName, currAccount.lastName,
+                &currAccount.balance) == 4) {
     currAccount.balance += holdDollarAmount[currAccount.accountNumber];
     auxMasterAccounts[currAccount.accountNumber]++;
     sprintf(name, "%s %s", currAccount.firstName, currAccount.lastName);
-    fprintf(nfPtr, "%-20d%-30s%.2f\n", currAccount.accountNumber, name, currAccount.balance);
+    fprintf(nfPtr, "%-20d%-30s%.2f\n", currAccount.accountNumber, name,
+            currAccount.balance);
   }
   for (size_t i = 0; i < 1000; i++) {
-    if (auxTransAccounts[i] > 0 && auxMasterAccounts[i] == 0) printf("Unmatched transaction record for account number %ld\n", i);
+    if (auxTransAccounts[i] > 0 && auxMasterAccounts[i] == 0)
+      printf("Unmatched transaction record for account number %ld\n", i);
   }
   fclose(ofPtr);
   fclose(tfPtr);

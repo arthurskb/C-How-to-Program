@@ -1,11 +1,11 @@
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
 
 struct stackNode {
-   int data;
-   struct stackNode *nextPtr;
+  int data;
+  struct stackNode *nextPtr;
 };
 typedef struct stackNode StackNode;
 typedef StackNode *StackNodePtr;
@@ -18,7 +18,7 @@ void removeBlankSpaces(char input[], char output[]);
 int evaluatePostfixExpression(char *expr);
 int calculate(int op1, int op2, char operator);
 
-int main () {
+int main() {
   printf("Insert a valid postfix expression: ");
   char postfixInput[1024], postfix[1024];
   fgets(postfixInput, 1024, stdin);
@@ -80,48 +80,39 @@ void removeBlankSpaces(char input[], char output[]) {
   output[j] = '\0';
 }
 
-void push(StackNodePtr *topPtr, int value)
-{
-   StackNodePtr newPtr = malloc(sizeof(StackNode));
+void push(StackNodePtr *topPtr, int value) {
+  StackNodePtr newPtr = malloc(sizeof(StackNode));
 
-   if (newPtr != NULL) {
-      newPtr->data = value;
-      newPtr->nextPtr = *topPtr;
-      *topPtr = newPtr;
-   }
-   else {
-      printf("%d not inserted. No memory available.\n", value);
-   }
+  if (newPtr != NULL) {
+    newPtr->data = value;
+    newPtr->nextPtr = *topPtr;
+    *topPtr = newPtr;
+  } else {
+    printf("%d not inserted. No memory available.\n", value);
+  }
 }
 
-int pop(StackNodePtr *topPtr)
-{
-   StackNodePtr tempPtr = *topPtr;
-   int popValue = (*topPtr)->data;
-   *topPtr = (*topPtr)->nextPtr;
-   free(tempPtr);
-   return popValue;
+int pop(StackNodePtr *topPtr) {
+  StackNodePtr tempPtr = *topPtr;
+  int popValue = (*topPtr)->data;
+  *topPtr = (*topPtr)->nextPtr;
+  free(tempPtr);
+  return popValue;
 }
 
-void printStack(StackNodePtr currentPtr)
-{
-   if (currentPtr == NULL) {
-      puts("The stack is empty.\n");
-   }
-   else {
-      puts("The stack is:");
+void printStack(StackNodePtr currentPtr) {
+  if (currentPtr == NULL) {
+    puts("The stack is empty.\n");
+  } else {
+    puts("The stack is:");
 
-      while (currentPtr != NULL) {
-         printf("%d --> ", currentPtr->data);
-         currentPtr = currentPtr->nextPtr;
-      }
+    while (currentPtr != NULL) {
+      printf("%d --> ", currentPtr->data);
+      currentPtr = currentPtr->nextPtr;
+    }
 
-      puts("NULL\n");
-   }
+    puts("NULL\n");
+  }
 }
 
-int isEmpty(StackNodePtr topPtr)
-{
-   return topPtr == NULL;
-}
-
+int isEmpty(StackNodePtr topPtr) { return topPtr == NULL; }
