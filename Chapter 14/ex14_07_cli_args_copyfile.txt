@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+int main(int argc, char *argv[]) {
+  FILE *fromPtr;
+  if ((fromPtr = fopen(argv[1], "r")) != NULL) {
+    FILE *toPtr;
+    if((toPtr = fopen(argv[2], "w")) != NULL) {
+      char c;
+      while ((c = fgetc(fromPtr)) != EOF) {
+        fputc(c, toPtr);
+      }
+      fclose(toPtr);
+    }
+    fclose(fromPtr);
+  }
+}
